@@ -5,14 +5,14 @@
 #include "time.h"
 using namespace std;
 
-double func(double x)//задаем саму функцию
+double func(double x)
 {
     double f;
     f=sin(x);
     return f;
 }
 
-double sort(double x, double y)//функци€, определ€юща€€, попадает ли точка под график функции
+double sort(double x, double y)
 {
     if((0<=y)&&(y<=func(x)))
     {
@@ -28,14 +28,14 @@ int main()
 {
     time_t t;
     srand(time(&t));
-    double up=1, down=0, left=0, right=1.57, Ssq, Sfunc;//задаем размеры пр€моугольника и площади пр€моугольника и функции
+    double up=1, down=0, left=0, right=1.57, Ssq, Sfunc;
     int i,j,k=0;
-    int n;//количество точек
+    int n;
     cout<<"Please, enter the number of random points:";
     cin>>n;
-    double sq[2][n];//массив дл€ рандомных точек
-    double h=0.0001;// шаг дл€ поиска максимума
-    Ssq=(up-down)*(right-left);//площадь описаного пр€моугольника
+    double sq[2][n];
+    double h=0.0001;
+    Ssq=(up-down)*(right-left);
     for(i=0;i<n;i++)
     {
                        sq[0][i]=rand()%157;
@@ -50,7 +50,7 @@ int main()
                                    k++;
                        }
     }
-    Sfunc=Ssq*k/n;//вычиcл€ем значение интеграла
+    Sfunc=Ssq*k/n;
     cout<<"The value of your integral is:"<<Sfunc<<'\n';
     system("PAUSE");
     return 0;
