@@ -5,7 +5,7 @@
 #include "time.h"
 using namespace std;
 
-double func(double num, double x)//задаем сами функции
+double func(double num, double x)
 {
     double f;
     if(num==1) f=cos(x);
@@ -17,7 +17,7 @@ double func(double num, double x)//задаем сами функции
     return f;
 }
 
-int sort_up(double f,double x, double y)//функци€, определ€юща€€, попадает ли точка под график функции выше оси ’
+int sort_up(double f,double x, double y)
 {
     if((0<=y)&&(y<=func(f,x)))
     {
@@ -29,7 +29,7 @@ int sort_up(double f,double x, double y)//функци€, определ€юща€€, попадает ли то
     }
 }
 
-int sort_down(double f,double x, double y)//функци€, определ€юща€€, попадает ли точка под график функции ниже оси ’ 
+int sort_down(double f,double x, double y)
 {
     if((y>=func(f,x))&&(y<=0))
     {
@@ -41,7 +41,7 @@ int sort_down(double f,double x, double y)//функци€, определ€юща€€, попадает ли 
     }
 }
 
-double find_top(double f,double h, double left, double right)//функци€ поиска максимума на введенном отрезке
+double find_top(double f,double h, double left, double right)
 {
     double i, max=0;
     for(i=left;i<=right;i=i+h)
@@ -54,7 +54,7 @@ double find_top(double f,double h, double left, double right)//функци€ поиска ма
     return max;
 }
 
-double find_down(double f,double h, double left, double right)//функци€ поиска минимума на введенном отрезке
+double find_down(double f,double h, double left, double right)
 {
     double i, min=0;
     for(i=left;i<=right;i=i+h)
@@ -71,7 +71,7 @@ double find_down(double f,double h, double left, double right)//функци€ поиска м
     return min;
 }
 
-void list_func()//перечень функций
+void list_func()
 {
     cout<<"Please, choose any function:\n";
     cout<< "1. cos(x);\n";
@@ -83,7 +83,7 @@ void list_func()//перечень функций
     cout<< "Number ot your function is:";
 }
 
-void rand_point(double right, double left, double max, double down, int n, double *sq)//функци€, заполн€юща€ массив рандомными точками    
+void rand_point(double right, double left, double max, double down, int n, double *sq)
 {
     srand(time(NULL));
     int i;
@@ -98,16 +98,16 @@ void rand_point(double right, double left, double max, double down, int n, doubl
 
 int main()
 {
-    double max, min, down=0, left, right, Ssqup, Sfuncup, Ssqdw, Sfuncdw, S;//задаем размеры пр€моугольников и площади пр€моугольников и функции
+    double max, min, down=0, left, right, Ssqup, Sfuncup, Ssqdw, Sfuncdw, S;
     int i,j,k=0;
-    int f;//номер функции
+    int f;
     list_func();
     cin>>f;
-    int n;//количество точек
+    int n;
     cout<<"Please, enter the number of random points:";
     cin>>n;
-    double sq[2][n];//массив дл€ рандомных точек
-    double h=0.0001;// шаг дл€ поиска максимума
+    double sq[2][n];
+    double h=0.0001;
     cout<<"Please, enter the ends of your interval through the space:";
     cin>>left>>right;
     i=1;
@@ -130,7 +130,7 @@ int main()
     cout<<"Top of your function is:"<<max<<'\n';
     min=find_down(f,h,left,right);
     cout<<"Minimum of your function is:"<<min<<'\n';
-    Ssqup=(max-down)*(right-left);//площадь описаного пр€моугольника
+    Ssqup=(max-down)*(right-left);
     rand_point(right, left, max, down, n, sq[0]);                 
     for(i=0;i<n;i++)
     {
@@ -139,7 +139,7 @@ int main()
                                    k++;
                        }
     }
-    Sfuncup=Ssqup*k/n;//вычиcл€ем значение интеграла
+    Sfuncup=Ssqup*k/n;
     if(min>=0)
     {
               Ssqdw=0;
